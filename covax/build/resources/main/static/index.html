@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<tr th:each="patient : ${patients}">
+    <td th:text="${patient.name}">Patient name</td>
+    <td th:text="${patient.surname}">Patient surname</td>
+    <td th:text="${patient.age}">Patient age</td>
+    <td th:text="${patient.covidInfo}">Patient covid information</td>
+    <td>
+        <form action="#" th:action="@{'/NewClient/'}" th:method="post" >
+            <input type="hidden" name="_method" value="post" />
+            <button type="submit" id="Approve" name="Approve">Update Covid Info </button>
+        </form>
+    </td>
+
+    <td>
+        <form action="#" th:action="@{'/deletePatient/'+${patient.id}}" th:method="post" >
+            <button type="submit" >Delete Patient </button>
+        </form>
+    </td>
+</tr>
+
+</body>
+</html>
